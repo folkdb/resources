@@ -1,5 +1,8 @@
-import test from 'ava';
+import { test } from 'uvu';
+import * as assert from 'uvu/assert';
 
-test('Always passes', (t) => {
-  t.pass();
+test('Always passes', () => {
+  assert.ok(true);
 });
+
+test.run();
