@@ -1,0 +1,4 @@
+title = "JC’s ABC Tune Finder"
+description = "A text-based search of historical and modern tune collections that have been converted to ABC notation. Search queries can be written using Perl regular expressions. Click on the linked terms in the search box to get a better understanding of how the software works."
+author = "John Chambers"
+url = "http://trillian.mit.edu/~jc/cgi/abc/tunefind"
