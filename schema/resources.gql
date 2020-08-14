@@ -1,0 +1,25 @@
+type Resource {
+  slug: String! @unique
+  url: String! @unique
+  title: String!
+  author: String!
+  description: String!
+  category: Category!
+  tags: [Tag!]! @relation
+}
+
+type Category {
+  slug: String! @unique
+  resources: [Resource!]!
+}
+
+type Tag {
+  slug: String! @unique
+  resources: [Resource!]! @relation
+}
+
+type Query {
+  allResources: [Resource!]!
+  allCategories: [Category!]!
+  allTags: [Tag!]!
+}

@@ -1,0 +1,52 @@
+{
+  "name": "@folkdb/resources",
+  "version": "0.0.0",
+  "description": "Source of truth for FolkDB's resources database",
+  "author": "Daniel C. Narey <os@metamodern.design>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/folkdb/resources"
+  },
+  "type": "module",
+  "module": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "lint": "eslint --fix lib/*.js",
+    "release": "np",
+    "sync": "git pull && git add . && git commit -m 'automated sync' && git push",
+    "test": "ava test/*.js",
+    "update": "updtr"
+  },
+  "dependencies": {
+    "@iarna/toml": "^2.2.5"
+  },
+  "devDependencies": {
+    "ava": "^3.10.1",
+    "eslint": "^7.5.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-ava": "^10.4.0",
+    "eslint-plugin-import": "^2.22.0",
+    "np": "^6.3.2",
+    "updtr": "^3.1.0"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "graphql"
+  ],
+  "ava": {
+    "nodeArguments": [
+      "--experimental-modules"
+    ]
+  }
+}
