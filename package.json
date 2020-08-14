@@ -26,15 +26,17 @@
   },
   "dependencies": {
     "@iarna/toml": "^2.2.5",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "graphql-request": "^3.0.0"
   },
   "devDependencies": {
-    "uvu": "^0.3.3",
     "eslint": "^7.5.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.22.0",
+    "graphql": "^15.3.0",
     "np": "^6.3.2",
-    "updtr": "^3.1.0"
+    "updtr": "^3.1.0",
+    "uvu": "^0.3.3"
   },
   "engines": {
     "node": ">=12"
