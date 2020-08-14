@@ -17,6 +17,7 @@
     "lib"
   ],
   "scripts": {
+    "module": "node --experimental-modules -r dotenv/config lib/index.js",
     "lint": "eslint --fix lib/*.js",
     "release": "np",
     "sync": "git pull && git add . && git commit -m 'automated sync' && git push",
@@ -24,7 +25,8 @@
     "update": "updtr"
   },
   "dependencies": {
-    "@iarna/toml": "^2.2.5"
+    "@iarna/toml": "^2.2.5",
+    "dotenv": "^8.2.0"
   },
   "devDependencies": {
     "uvu": "^0.3.3",
