@@ -5,21 +5,21 @@ type Resource {
   author: String!
   description: String!
   category: Category!
-  tags: [Tag!]! @relation
+  tags: [Tag!] @relation
 }
 
 type Category {
   slug: String! @unique
-  resources: [Resource!]!
+  resources: [Resource!]
 }
 
 type Tag {
   slug: String! @unique
-  resources: [Resource!]! @relation
+  resources: [Resource!] @relation
 }
 
 type Query {
-  allResources: [Resource!]!
-  allCategories: [Category!]!
-  allTags: [Tag!]!
+  allResources: [Resource!]
+  allCategories: [Category!]
+  allTags: [Tag!]
 }
