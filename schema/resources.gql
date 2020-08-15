@@ -19,7 +19,17 @@ type Tag {
 }
 
 type Query {
-  allResources: [Resource!]
   allCategories: [Category!]
   allTags: [Tag!]
+  allResources: [Resource!]
+  findCategoryBySlug(slug: String!): Category
+  findTagBySlug(slug: String!): Tag
+  findResourceBySlug(slug: String!): Resource
+  findResourceByUrl(url: String!): Url
+}
+
+type Mutation {
+  deleteCategoryBySlug(slug: String!): Category
+  deleteTagBySlug(slug: String!): Tag
+  deleteResourceBySlug(slug: String!): Resource
 }
