@@ -14,16 +14,16 @@ test('Always passes', () => {
   assert.ok(true);
 });
 
-test('listDirectories', () => {
+test('listDirectories', async () => {
   assert.equal(
-    listDirectories(fixtures),
+    await listDirectories(fixtures),
     ['fruit', 'veggies'],
   );
 });
 
 test('listFiles', () => {
   assert.equal(
-    listFiles(fixtures),
+    await listFiles(fixtures),
     ['cake.txt', 'cookies.txt'],
   );
 });
