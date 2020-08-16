@@ -21,7 +21,7 @@ test('listDirectories', async () => {
   );
 });
 
-test('listFiles', () => {
+test('listFiles', async () => {
   assert.equal(
     await listFiles(fixtures),
     ['cake.txt', 'cookies.txt'],
