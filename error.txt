@@ -1,0 +1,24 @@
+build-json
+  context: /home/daniel/resources
+  options:
+
+Exception caught at parseEach in lib/filesystem-api/parse-strings.js of folkdb/resources:
+Check the following arguments:
+{
+  "current": "askdughadfklg=\n"
+}
+
+And the following environment variables:
+{}
+
+Exception caught at eachCategory in lib/build-json.js of folkdb/resources:
+Check the following arguments:
+{
+  "category": "foo"
+}
+
+And the following environment variables:
+{
+  "entryPath": "/home/daniel/resources/data"
+}
+
