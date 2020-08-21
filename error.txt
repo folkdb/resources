@@ -1,7 +1,6 @@
-Running script build-json
-context: "/home/daniel/resources"
-options: {}
-
+Running script build-json with arguments:
+  context: /home/daniel/resources
+  options: {}
 *=================================*
 |          RUNTIME ERROR          |
 *=================================*
@@ -13,15 +12,15 @@ Exception caught at:
 
 Error message:
   Unexpected character, expecting string, number, datetime, boolean, inline array or inline table at row 1, col 16, pos 15:
-1> askdughadfklg=
-                  ^
-2:
+  1> askdughadfklg=
+                    ^
+  2:
 
 Check the following arguments:
   current: "askdughadfklg=\n"
 
 And the following environment variables:
-  parser: "[Function]"
+  parser: Symbol(parseAsync)
 
 
 *=================================*
