@@ -12,6 +12,9 @@ plugins:
   - import
 
 rules:
+  no-unused-vars: 
+    - error
+    - varsIgnorePattern: '_' 
   import/prefer-default-export: off
   import/no-extraneous-dependencies:
     - error
