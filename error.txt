@@ -1,15 +1,15 @@
 Running script build-json
-  context: "/home/daniel/resources"
-  options: {}
+context: "/home/daniel/resources"
+options: {}
 
-*---------------------------------*
+*=================================*
 |          RUNTIME ERROR          |
-*---------------------------------*
+*=================================*
 
 Exception caught at:
-  library: "folkdb/resources"
-  source: "lib/filesystem-api/parse-strings.js"
-  function: "parseEach"
+  library: folkdb/resources
+  source: lib/filesystem-api/parse-strings.js
+  function: parseEach
 
 Error message:
   Unexpected character, expecting string, number, datetime, boolean, inline array or inline table at row 1, col 16, pos 15:
@@ -23,14 +23,15 @@ Check the following arguments:
 And the following environment variables:
   parser: "[Function]"
 
-*---------------------------------*
+
+*=================================*
 |          RUNTIME ERROR          |
-*---------------------------------*
+*=================================*
 
 Exception caught at:
-  library: "folkdb/resources"
-  source: "lib/build-json.js"
-  function: "eachCategory"
+  library: folkdb/resources
+  source: lib/build-json.js
+  function: eachCategory
 
 Error message:
   Cannot read property 'replace' of undefined
@@ -40,4 +41,5 @@ Check the following arguments:
 
 And the following environment variables:
   entryPath: "/home/daniel/resources/data"
+
 
