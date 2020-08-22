@@ -8,7 +8,8 @@
     "moduleResolution": "node",
     "strictNullChecks": true,
     "noImplicitAny": true,
-    "strict": true
+    "strict": true,
+    "noEmitOnError": true
   },
   "include": [
     "@types/**/*",

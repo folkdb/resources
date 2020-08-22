@@ -1,4 +1,4 @@
-export const caseOf = (kvList, {
+export const caseOf = (kvList : Array<string> | Array<number>, {
   defaultTo = undefined,
   test = (a, b) => (a === b),
 } = {}) => (value) => {

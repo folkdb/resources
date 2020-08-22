@@ -17,9 +17,10 @@ const external = [
 export default [
   {
     input: 'src/utils/index.ts',
-    output: [
-      { file: 'dist/utils.js', format: 'es' },
-    ],
+    output: {
+      dir: 'dist',
+      format: 'es',
+    },
     plugins,
     external,
   },
