@@ -1,4 +1,4 @@
-import { print } from './print.ts';
+import { print } from './print';
 
 export const println = (output, {
   lines = 1,

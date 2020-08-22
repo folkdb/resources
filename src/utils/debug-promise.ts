@@ -1,5 +1,5 @@
-import { println } from './println.ts';
-import { stringify } from './stringify.ts';
+import { println } from './println';
+import { stringify } from './stringify';
 
 export const debugPromise = async (promise, timeout = 5) => {
   const expire = () => new Promise((resolve) => {

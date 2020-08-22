@@ -1,8 +1,8 @@
 import cleanStack from 'clean-stack';
 import extractStack from 'extract-stack';
-import { println } from './println.ts';
-import { stringify } from './stringify.ts';
-import { styled } from './styled.ts';
+import { println } from './println';
+import { stringify } from './stringify';
+import { styled } from './styled';
 
 export const tryCatch = async (call, originator) => {
   try {
