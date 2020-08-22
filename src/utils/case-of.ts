@@ -1,7 +1,7 @@
-export const caseOf = (kvList : Array<string> | Array<number>, {
+export const caseOf<T> = (kvList: [string, T][] | [number, T][], {
   defaultTo = undefined,
   test = (a, b) => (a === b),
-} = {}) => (value) => {
+} = {}) => (value): T => {
   const match = ([pattern]) => test(pattern, value);
   const [_, result] = kvList.find(match) || ['_', defaultTo];
 
