@@ -1,1 +1,9 @@
-export declare const tryCatch: (call: any, originator: any) => Promise<any>;
+interface Originator {
+    library?: string;
+    source: string;
+    function: string;
+    arguments?: any[];
+    environment?: any[];
+}
+export declare const tryCatch: (call: Function, originator: Originator) => Promise<any>;
+export {};

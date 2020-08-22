@@ -1,5 +1,5 @@
 /// <reference types="node" />
-export declare const print: (output: any, { indent, stream, }?: {
+export declare const print: (output: string, { indent, stream, }?: {
     indent?: number | undefined;
     stream?: (NodeJS.WriteStream & {
         fd: 1;

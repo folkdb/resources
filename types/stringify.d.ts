@@ -1,1 +1,1 @@
-export declare const stringify: (obj: any) => any;
+export declare const stringify: (obj: any) => string;

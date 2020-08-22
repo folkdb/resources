@@ -4,10 +4,10 @@ type Style = 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error' 
 
 export const styled = (
   kind: Style
-): (string) => string => {
+) => {
   switch (kind) {
     case 'primary':
-      return (s) => kleur.bold(kleur.blue(s));
+      return (s: string) => kleur.bold(kleur.blue(s));
     case 'secondary':
       return kleur.magenta;
     case 'info':

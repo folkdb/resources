@@ -4,7 +4,15 @@ import { println } from './println';
 import { stringify } from './stringify';
 import { styled } from './styled';
 
-export const tryCatch = async (call, originator) => {
+interface Originator {
+  library?: string;
+  source: string;
+  function: string;
+  arguments?: any[];
+  environment?: any[];
+}
+
+export const tryCatch = async (call: Function, originator: Originator): Promise<any> => {
   try {
     const result = await call();
     return result;
@@ -24,7 +32,7 @@ export const tryCatch = async (call, originator) => {
       '*=================================*',
       '|          RUNTIME ERROR          |',
       '*=================================*',
-    ].map(styled('error')).map(println);
+    ].map(styled('error')).forEach((s) => println(s));
 
     println('');
 
@@ -33,14 +41,14 @@ export const tryCatch = async (call, originator) => {
       `  library: ${styled('info')('folkdb/resources')}`,
       `  source: ${styled('info')(originator.source)}`,
       `  function: ${styled('info')(originator.function)}`,
-    ].map(println);
+    ].forEach((s) => println(s));
 
     println('');
 
     println(styled('warning')('Error message:'));
     println(
       `${styled('error')(err.message)}`,
-      { indent: 2, lines: 2 },
+      { lines: 2, indent: 2 },
     );
 
     if (originator.arguments) {

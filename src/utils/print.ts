@@ -1,9 +1,9 @@
-export const print = (output, {
+export const print = (output: string, {
   indent = 0,
   stream = process.stdout,
 } = {}) => {
   const before = ' '.repeat(indent);
-  const indentNewLines = (str) => str.replace(/\n/g, `\n${before}`);
+  const indentNewLines = (str: string) => str.replace(/\n/g, `\n${before}`);
 
   const formatted = (
     output.slice(-1) === '\n'

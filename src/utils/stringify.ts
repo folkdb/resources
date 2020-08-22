@@ -1,6 +1,6 @@
 import stringifyObject from 'stringify-object';
 
-export const stringify = (obj) => stringifyObject(obj, {
+export const stringify = (obj: any) => stringifyObject(obj, {
   indent: '  ',
   singleQuotes: false,
 });

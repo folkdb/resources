@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@iarna/toml": "^2.2.5",
+    "@types/stringify-object": "^3.3.0",
     "clean-stack": "^3.0.0",
     "dotenv": "^8.2.0",
     "extract-stack": "^2.0.0",
@@ -30,13 +31,14 @@
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^9.0.0",
-    "@rollup/plugin-typescript": "^5.0.2",
     "eslint": "^7.5.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.22.0",
     "graphql": "^15.3.0",
     "rollup": "^2.26.4",
     "rollup-plugin-preserve-shebangs": "^0.2.0",
+    "rollup-plugin-typescript2": "^0.27.2",
+    "tslib": "^2.0.1",
     "typescript": "^4.0.2",
     "updtr": "^3.1.0",
     "uvu": "^0.3.3"

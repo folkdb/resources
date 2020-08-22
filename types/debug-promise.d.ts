@@ -1,1 +1,1 @@
-export declare const debugPromise: (promise: any, timeout?: number) => Promise<void>;
+export declare const debugPromise: (promise: Promise<any>, timeout?: number) => Promise<void>;

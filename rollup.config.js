@@ -1,11 +1,11 @@
 import nodeResolve from '@rollup/plugin-node-resolve';
 import { preserveShebangs } from 'rollup-plugin-preserve-shebangs';
-import typescript from '@rollup/plugin-typescript';
+import typescript from 'rollup-plugin-typescript2';
 import pkg from './package.json';
 
 const plugins = [
   nodeResolve({ preferBuiltins: true }),
-  typescript(),
+  typescript({ useTsconfigDeclarationDir: true }),
 ];
 
 const external = [

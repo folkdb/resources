@@ -1,7 +1,7 @@
 import { println } from './println';
 import { stringify } from './stringify';
 
-export const debugPromise = async (promise, timeout = 5) => {
+export const debugPromise = async (promise: Promise<any>, timeout = 5) => {
   const expire = () => new Promise((resolve) => {
     setTimeout(() => resolve('%TIMEOUT%'), timeout * 1000);
   });
