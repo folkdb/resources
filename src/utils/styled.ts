@@ -1,12 +1,24 @@
-import k from 'kleur';
-import { caseOf } from './case-of.ts';
+import kleur from 'kleur';
 
-export const styled = caseOf([
-  ['primary', (s) => k.bold(k.blue(s))],
-  ['secondary', k.magenta],
-  ['info', k.cyan],
-  ['success', k.green],
-  ['warning', k.yellow],
-  ['error', k.red],
-  ['muted', k.gray],
-], { defaultTo: (x) => x });
+type Style = 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error' | 'muted';
+
+export const styled = (
+  kind: Style
+): (string) => string => {
+  switch (kind) {
+    case 'primary':
+      return (s) => kleur.bold(kleur.blue(s));
+    case 'secondary':
+      return kleur.magenta;
+    case 'info':
+      return kleur.cyan;
+    case 'success':
+      return kleur.green;
+    case 'warning':
+      return kleur.yellow;
+    case 'error':
+      return kleur.red;
+    case 'muted':
+      return kleur.gray;
+  }
+};
