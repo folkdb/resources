@@ -5,7 +5,7 @@ import * as assert from 'uvu/assert';
 import {
   listDirectories,
   listFiles
-} from '../lib/api/filesystem/index.js';
+} from '../lib/filesystem-api/index.js';
 
 
 const fixtures = resolve(process.cwd(), 'test/fixtures');
