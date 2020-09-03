@@ -1,0 +1,62 @@
+
+Running script lib/sync-db/cli.js with
+
+  context: "/home/daniel/resources"
+  
+  options: {}
+  
+  {
+    allCategories: {
+      data: [
+        {
+          _id: "273864004818960915",
+          slug: "apple"
+        },
+        {
+          _id: "273864024201888275",
+          slug: "orange"
+        },
+        {
+          _id: "273864052327842323",
+          slug: "pear"
+        },
+        {
+          _id: "273896532185448978",
+          slug: "watermelon"
+        },
+        {
+          _id: "273896614230229523",
+          slug: "banana"
+        },
+        {
+          _id: "273896854943433235",
+          slug: "grapes"
+        },
+        {
+          _id: "273898502224871954",
+          slug: "lemon"
+        },
+        {
+          _id: "273948311374791186",
+          slug: "pineapple"
+        },
+        {
+          _id: "275616005993005587",
+          slug: "mango"
+        },
+        {
+          _id: "275616245250785811",
+          slug: "papaya"
+        },
+        {
+          _id: "275616613866144256",
+          slug: "fig"
+        }
+      ]
+    }
+  }
+  
+  ∆ ········· ∆
+  ‡  D O N E  ‡
+  ^ ········· ^
+
