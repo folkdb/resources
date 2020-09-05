@@ -12,7 +12,7 @@ type Category {
   slug: String! @unique
   title: String!
   group: String
-  resources: [Resource!]
+  resources: [Resource!] @relation
 }
 
 type Tag {
