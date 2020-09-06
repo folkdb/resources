@@ -23,15 +23,17 @@
     "clean-stack": "^3.0.0",
     "dotenv": "^8.2.0",
     "extract-stack": "^2.0.0",
-    "graphql-request": "^3.0.0",
+    "graphql-request": "^3.1.0",
     "kleur": "^4.1.1",
     "mri": "^1.1.6",
     "stringify-object": "^3.3.0"
   },
   "devDependencies": {
-    "eslint": "^7.7.0",
+    "apollo-server": "^2.17.0",
+    "eslint": "^7.8.1",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.22.0",
+    "get-port": "^5.1.1",
     "graphql": "^15.3.0",
     "updtr": "^3.1.0",
     "uvu": "^0.3.3"

@@ -1,4 +1,6 @@
-import { GraphQLServer } from 'graphql-yoga';
+import apolloServer from 'apollo-server';
+
+const { ApolloServer } = apolloServer;
 
 const typeDefs = `
   type Query {
@@ -12,6 +14,4 @@ const resolvers = {
   },
 };
 
-const server = new GraphQLServer({ typeDefs, resolvers });
-
-export default server;
+export const gqlServer = new ApolloServer({ typeDefs, resolvers });
