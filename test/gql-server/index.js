@@ -1,6 +1,7 @@
 import { readFile } from 'fs/promises';
 import apolloServer from 'apollo-server';
 import { absolute } from '../../lib/utils/path/index.js';
+import { categories, resources } from './data.js';
 
 const { ApolloServer } = apolloServer;
 
@@ -9,12 +10,8 @@ export const mockServer = async () => {
 
   const resolvers = {
     Query: {
-      allResources: () => ({ 
-        data: [
-          { slug: 'apple' },
-          { slug: 'orange' },
-          { slug: 'pear' },
-        ],
+      allCategories: () => ({ 
+        data: categories,
       }),
     },
   };

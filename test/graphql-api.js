@@ -2,6 +2,7 @@ import { test } from 'uvu';
 import * as assert from 'uvu/assert';
 import graphqlRequest from 'graphql-request';
 import { mockServer } from './gql-server/index.js';
+import { categories, resources } from './gql-server/data.js';
 
 const { GraphQLClient } = graphqlRequest;
 
@@ -10,9 +11,9 @@ test('Gets expected Hello response', async () => {
   const { url, server } = await gqlServer.listen();
   const client = new GraphQLClient(url);
 
-  const { allResources } = await client.request(`
+  const { allCategories } = await client.request(`
     {
-      allResources {
+      allCategories {
         data {
           slug
         }
@@ -20,11 +21,7 @@ test('Gets expected Hello response', async () => {
     }
   `);
   
-  assert.equal(allResources.data, [
-    { slug: 'apple' },
-    { slug: 'orange' },
-    { slug: 'pear' },
-  ]);
+  assert.equal(allCategories.data, categories.map({ slug } => ({ slug })));
 
   server.close();
 });
