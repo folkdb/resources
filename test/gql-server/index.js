@@ -1,6 +1,6 @@
 import { readFile } from 'fs/promises';
 import apolloServer from 'apollo-server';
-import { absolute } from '../lib/utils/path/index.js';
+import { absolute } from '../../lib/utils/path/index.js';
 
 const { ApolloServer } = apolloServer;
 

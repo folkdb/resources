@@ -1,11 +1,12 @@
 import { test } from 'uvu';
 import * as assert from 'uvu/assert';
 import graphqlRequest from 'graphql-request';
-import { gqlServer } from './gql-server/index.js';
+import { mockServer } from './gql-server/index.js';
 
 const { GraphQLClient } = graphqlRequest;
 
 test('Gets expected Hello response', async () => {
+  const gqlServer = await mockServer();
   const { url, server } = await gqlServer.listen();
   const client = new GraphQLClient(url);
 
