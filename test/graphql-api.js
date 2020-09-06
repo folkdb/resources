@@ -21,7 +21,7 @@ test('Gets expected Hello response', async () => {
     }
   `);
   
-  assert.equal(allCategories.data, categories.map({ slug } => ({ slug })));
+  assert.equal(allCategories.data, categories.map(({ slug }) => ({ slug })));
 
   server.close();
 });
