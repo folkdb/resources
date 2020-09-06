@@ -1,0 +1,320 @@
+directive @embedded on OBJECT
+
+directive @collection(name: String!) on OBJECT
+
+directive @index(name: String!) on FIELD_DEFINITION
+
+directive @resolver(name: String, paginated: Boolean! = false) on FIELD_DEFINITION
+
+directive @relation(name: String) on FIELD_DEFINITION
+
+directive @unique(index: String) on FIELD_DEFINITION
+
+type Category {
+  """The document's ID."""
+  _id: ID!
+  slug: String!
+  resources(
+    """The number of items to return per page."""
+    _size: Int
+
+    """The pagination cursor."""
+    _cursor: String
+  ): ResourcePage!
+  title: String!
+  group: String
+
+  """The document's timestamp."""
+  _ts: Long!
+}
+
+"""'Category' input values"""
+input CategoryInput {
+  slug: String!
+  title: String!
+  group: String
+  resources: CategoryResourcesRelation
+}
+
+"""The pagination object for elements of type 'Category'."""
+type CategoryPage {
+  """The elements of type 'Category' in this page."""
+  data: [Category]!
+
+  """A cursor for elements coming after the current page."""
+  after: String
+
+  """A cursor for elements coming before the current page."""
+  before: String
+}
+
+"""
+Allow manipulating the relationship between the types 'Category' and 'Resource'.
+"""
+input CategoryResourcesRelation {
+  """
+  Create one or more documents of type 'Resource' and associate them with the current document.
+  """
+  create: [ResourceInput]
+
+  """
+  Connect one or more documents of type 'Resource' with the current document using their IDs.
+  """
+  connect: [ID]
+
+  """
+  Disconnect the given documents of type 'Resource' from the current document using their IDs.
+  """
+  disconnect: [ID]
+}
+
+scalar Date
+
+"""
+The `Long` scalar type represents non-fractional signed whole numeric values.
+Long can represent values between -(2^63) and 2^63 - 1.
+"""
+scalar Long
+
+type Mutation {
+  """Delete an existing document in the collection of 'Tag'"""
+  deleteTag(
+    """The 'Tag' document's ID"""
+    id: ID!
+  ): Tag
+
+  """Create a new document in the collection of 'Resource'"""
+  createResource(
+    """'Resource' input values"""
+    data: ResourceInput!
+  ): Resource!
+
+  """Update an existing document in the collection of 'Tag'"""
+  updateTag(
+    """The 'Tag' document's ID"""
+    id: ID!
+
+    """'Tag' input values"""
+    data: TagInput!
+  ): Tag
+
+  """Delete an existing document in the collection of 'Resource'"""
+  deleteResource(
+    """The 'Resource' document's ID"""
+    id: ID!
+  ): Resource
+
+  """Create a new document in the collection of 'Category'"""
+  createCategory(
+    """'Category' input values"""
+    data: CategoryInput!
+  ): Category!
+
+  """Update an existing document in the collection of 'Category'"""
+  updateCategory(
+    """The 'Category' document's ID"""
+    id: ID!
+
+    """'Category' input values"""
+    data: CategoryInput!
+  ): Category
+
+  """Create a new document in the collection of 'Tag'"""
+  createTag(
+    """'Tag' input values"""
+    data: TagInput!
+  ): Tag!
+
+  """Delete an existing document in the collection of 'Category'"""
+  deleteCategory(
+    """The 'Category' document's ID"""
+    id: ID!
+  ): Category
+
+  """Update an existing document in the collection of 'Resource'"""
+  updateResource(
+    """The 'Resource' document's ID"""
+    id: ID!
+
+    """'Resource' input values"""
+    data: ResourceInput!
+  ): Resource
+}
+
+type Query {
+  """Find a document from the collection of 'Tag' by its id."""
+  findTagByID(
+    """The 'Tag' document's ID"""
+    id: ID!
+  ): Tag
+  allCategories(
+    """The number of items to return per page."""
+    _size: Int
+
+    """The pagination cursor."""
+    _cursor: String
+  ): CategoryPage!
+
+  """Find a document from the collection of 'Category' by its id."""
+  findCategoryByID(
+    """The 'Category' document's ID"""
+    id: ID!
+  ): Category
+
+  """Find a document from the collection of 'Resource' by its id."""
+  findResourceByID(
+    """The 'Resource' document's ID"""
+    id: ID!
+  ): Resource
+  allResources(
+    """The number of items to return per page."""
+    _size: Int
+
+    """The pagination cursor."""
+    _cursor: String
+  ): ResourcePage!
+  allTags(
+    """The number of items to return per page."""
+    _size: Int
+
+    """The pagination cursor."""
+    _cursor: String
+  ): TagPage!
+}
+
+type Resource {
+  author: String!
+  url: String!
+  description: String!
+
+  """The document's ID."""
+  _id: ID!
+  tags(
+    """The number of items to return per page."""
+    _size: Int
+
+    """The pagination cursor."""
+    _cursor: String
+  ): TagPage!
+  slug: String!
+  category: Category!
+  title: String!
+
+  """The document's timestamp."""
+  _ts: Long!
+}
+
+"""
+Allow manipulating the relationship between the types 'Resource' and 'Category' using the field 'Resource.category'.
+"""
+input ResourceCategoryRelation {
+  """
+  Create a document of type 'Category' and associate it with the current document.
+  """
+  create: CategoryInput
+
+  """
+  Connect a document of type 'Category' with the current document using its ID.
+  """
+  connect: ID
+}
+
+"""'Resource' input values"""
+input ResourceInput {
+  slug: String!
+  url: String!
+  title: String!
+  author: String!
+  description: String!
+  category: ResourceCategoryRelation
+  tags: ResourceTagsRelation
+}
+
+"""The pagination object for elements of type 'Resource'."""
+type ResourcePage {
+  """The elements of type 'Resource' in this page."""
+  data: [Resource]!
+
+  """A cursor for elements coming after the current page."""
+  after: String
+
+  """A cursor for elements coming before the current page."""
+  before: String
+}
+
+"""
+Allow manipulating the relationship between the types 'Resource' and 'Tag'.
+"""
+input ResourceTagsRelation {
+  """
+  Create one or more documents of type 'Tag' and associate them with the current document.
+  """
+  create: [TagInput]
+
+  """
+  Connect one or more documents of type 'Tag' with the current document using their IDs.
+  """
+  connect: [ID]
+
+  """
+  Disconnect the given documents of type 'Tag' from the current document using their IDs.
+  """
+  disconnect: [ID]
+}
+
+type Tag {
+  """The document's ID."""
+  _id: ID!
+
+  """The document's timestamp."""
+  _ts: Long!
+  slug: String!
+  resources(
+    """The number of items to return per page."""
+    _size: Int
+
+    """The pagination cursor."""
+    _cursor: String
+  ): ResourcePage!
+}
+
+"""'Tag' input values"""
+input TagInput {
+  slug: String!
+  resources: TagResourcesRelation
+}
+
+"""The pagination object for elements of type 'Tag'."""
+type TagPage {
+  """The elements of type 'Tag' in this page."""
+  data: [Tag]!
+
+  """A cursor for elements coming after the current page."""
+  after: String
+
+  """A cursor for elements coming before the current page."""
+  before: String
+}
+
+"""
+Allow manipulating the relationship between the types 'Tag' and 'Resource'.
+"""
+input TagResourcesRelation {
+  """
+  Create one or more documents of type 'Resource' and associate them with the current document.
+  """
+  create: [ResourceInput]
+
+  """
+  Connect one or more documents of type 'Resource' with the current document using their IDs.
+  """
+  connect: [ID]
+
+  """
+  Disconnect the given documents of type 'Resource' from the current document using their IDs.
+  """
+  disconnect: [ID]
+}
+
+scalar Time
+
