@@ -2,12 +2,12 @@ import { suite } from 'uvu';
 import * as assert from 'uvu/assert';
 import graphqlRequest from 'graphql-request';
 import { mockServer } from './mock-server/index.js';
-import { categories, resources } from './gql-server/data.js';
-
+import { categories, resources } from './mock-server/data.js';
 import * as api from '../lib/graphql-api/index.js';
 
 const graphqlApiTests = suite('GraphQL API Tests');
 
+let client;
 let cleanup;
 
 graphqlApiTests.before(async () => {
@@ -16,7 +16,7 @@ graphqlApiTests.before(async () => {
   cleanup = () => { server.close(); };
   
   const { GraphQLClient } = graphqlRequest;
-  const client = new GraphQLClient(url);
+  client = new GraphQLClient(url);
 });
 
 graphqlApiTests.after(() => {
@@ -25,7 +25,7 @@ graphqlApiTests.after(() => {
 
 graphqlApiTests('allCategories', async () => {
   const response = await client.request(api.allCategories.operation);
-  
+
   assert.equal(
     response.allCategories.data,
     categories.map(({ _id, slug }) => ({ _id, slug })),
@@ -34,7 +34,7 @@ graphqlApiTests('allCategories', async () => {
 
 graphqlApiTests('allResources', async () => {
   const response = await client.request(api.allResources.operation);
-  
+
   assert.equal(
     response.allResources.data,
     resources.map(({ _id, slug }) => ({ _id, slug })),
