@@ -1,18 +1,18 @@
 export const categories = [
   {
-    _id: '1',
+    _id: 'c1',
     slug: 'fruits',
     title: 'Fruits',
     group: 'produce',
   },
   {
-    _id: '2',
+    _id: 'c2',
     slug: 'vegetables',
     title: 'Vegetables',
     group: 'produce',
   },
   {
-    _id: '3',
+    _id: 'c3',
     slug: 'grains',
     title: 'Grains',
     group: null,
@@ -21,6 +21,8 @@ export const categories = [
 
 export const resources = [
   {
+    _id: 'r1',
     slug: 'apple',
+    
   }
 ];
