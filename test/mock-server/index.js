@@ -13,6 +13,9 @@ export const mockServer = async () => {
       allCategories: () => ({ 
         data: categories,
       }),
+      allResources: () => ({ 
+        data: resources,
+      }),
     },
   };
 

@@ -1,29 +1,44 @@
-import { test } from 'uvu';
+import { suite } from 'uvu';
 import * as assert from 'uvu/assert';
 import graphqlRequest from 'graphql-request';
-import { mockServer } from './gql-server/index.js';
+import { mockServer } from './mock-server/index.js';
 import { categories, resources } from './gql-server/data.js';
 
-const { GraphQLClient } = graphqlRequest;
+import * as api from '../lib/graphql-api/index.js';
 
-test('Gets expected Hello response', async () => {
+const graphqlApiTests = suite('GraphQL API Tests');
+
+let cleanup;
+
+graphqlApiTests.before(async () => {
   const gqlServer = await mockServer();
   const { url, server } = await gqlServer.listen();
-  const client = new GraphQLClient(url);
-
-  const { allCategories } = await client.request(`
-    {
-      allCategories {
-        data {
-          slug
-        }
-      }
-    }
-  `);
+  cleanup = () => { server.close(); };
   
-  assert.equal(allCategories.data, categories.map(({ slug }) => ({ slug })));
-
-  server.close();
+  const { GraphQLClient } = graphqlRequest;
+  const client = new GraphQLClient(url);
 });
 
-export default test;
+graphqlApiTests.after(() => {
+  cleanup();
+});
+
+graphqlApiTests('allCategories', async () => {
+  const response = await client.request(api.allCategories.operation);
+  
+  assert.equal(
+    response.allCategories.data,
+    categories.map(({ _id, slug }) => ({ _id, slug })),
+  );
+});
+
+graphqlApiTests('allResources', async () => {
+  const response = await client.request(api.allResources.operation);
+  
+  assert.equal(
+    response.allResources.data,
+    resources.map(({ _id, slug }) => ({ _id, slug })),
+  );
+});
+
+export default graphqlApiTests;

@@ -1,5 +1,5 @@
-import filesystemApi from './filesystem-api.js';
-import graphqlApi from './graphql-api.js';
+import filesystemApiTests from './filesystem-api.js';
+import graphqlApiTests from './graphql-api.js';
 
-filesystemApi.run();
-graphqlApi.run();
+filesystemApiTests.run();
+graphqlApiTests.run();

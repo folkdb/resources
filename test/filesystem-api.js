@@ -7,7 +7,7 @@ import {
 } from '../lib/filesystem-api/index.js';
 
 
-const entry = resolve(process.cwd(), 'test/fs-entry');
+const entry = resolve(process.cwd(), 'test/mock-files');
 
 test('Always passes', () => {
   assert.ok(true);
