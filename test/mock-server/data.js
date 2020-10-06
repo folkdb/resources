@@ -23,6 +23,16 @@ export const resources = [
   {
     _id: 'r1',
     slug: 'apple',
-    
-  }
+    category: categories[0],
+  },
+  {
+    _id: 'r2',
+    slug: 'squash',
+    category: categories[1],
+  },
+  {
+    _id: 'r1',
+    slug: 'oats',
+    category: categories[2],
+  },
 ];
