@@ -10,15 +10,9 @@ const graphqlApiTests = suite('GraphQL API Tests');
 graphqlApiTests.before(async (context) => {
   const gqlServer = await mockServer();
   const { url, server } = await gqlServer.listen();
-  context.server = server;
   
   const { GraphQLClient } = graphqlRequest;
   context.client = new GraphQLClient(url);
-});
-
-graphqlApiTests.after((context) => {
-  const { server } = context;
-  server.close();
 });
 
 graphqlApiTests('allCategories', async (context) => {
