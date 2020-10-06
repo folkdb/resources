@@ -35,7 +35,7 @@ graphqlApiTests('allResources', async () => {
 
   assert.equal(
     response.allResources.data,
-    resources.map(({ _id, slug }) => ({ _id, slug })),
+    resources,
   );
 });
 
