@@ -5,25 +5,23 @@ import { mockServer } from './mock-server/index.js';
 import { categories, resources } from './mock-server/data.js';
 import * as api from '../lib/graphql-api/index.js';
 
-let client;
-let cleanup;
+const graphqlApiTests = suite('GraphQL API Tests');
 
-const graphqlApiTests = suite('GraphQL API Tests', { client, cleanup });
-
-graphqlApiTests.before(async () => {
+graphqlApiTests.before(async (context) => {
   const gqlServer = await mockServer();
   const { url, server } = await gqlServer.listen();
-  cleanup = () => { server.close(); };
+  context.cleanup = () => { server.close(); };
   
   const { GraphQLClient } = graphqlRequest;
-  client = new GraphQLClient(url);
+  context.client = new GraphQLClient(url);
 });
 
-graphqlApiTests.after(() => {
-  cleanup();
+graphqlApiTests.after((context) => {
+  context.cleanup();
 });
 
-graphqlApiTests('allCategories', async () => {
+graphqlApiTests('allCategories', async (context) => {
+  const { client } = context;
   const response = await client.request(api.allCategories.operation);
 
   assert.equal(
@@ -32,7 +30,8 @@ graphqlApiTests('allCategories', async () => {
   );
 });
 
-graphqlApiTests('allResources', async () => {
+graphqlApiTests('allResources', async (context) => {
+  const { client } = context;
   const response = await client.request(api.allResources.operation);
 
   assert.equal(
