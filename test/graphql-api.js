@@ -5,16 +5,14 @@ import { mockServer } from './mock-server/index.js';
 import { categories, resources } from './mock-server/data.js';
 import * as api from '../lib/graphql-api/index.js';
 
-let client;
-
 const graphqlApiTests = suite('GraphQL API Tests');
 
-graphqlApiTests.before(async () => {
+graphqlApiTests.before(async (context) => {
   const { GraphQLClient } = graphqlRequest;
   const gqlServer = await mockServer();
   const { url } = await gqlServer.listen();
 
-  client = new GraphQLClient(url);
+  context.client = new GraphQLClient(url);
 });
 
 graphqlApiTests('Always passes', () => {
@@ -22,6 +20,7 @@ graphqlApiTests('Always passes', () => {
 });
 
 graphqlApiTests('allCategories', async () => {
+  const { context } = client;
   const response = await client.request(api.allCategories.operation);
 
   assert.equal(
@@ -31,6 +30,7 @@ graphqlApiTests('allCategories', async () => {
 });
 
 graphqlApiTests('allResources', async () => {
+  const { context } = client;
   const response = await client.request(api.allResources.operation);
 
   assert.equal(
