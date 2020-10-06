@@ -5,10 +5,10 @@ import { mockServer } from './mock-server/index.js';
 import { categories, resources } from './mock-server/data.js';
 import * as api from '../lib/graphql-api/index.js';
 
-const graphqlApiTests = suite('GraphQL API Tests');
-
 let client;
 let cleanup;
+
+const graphqlApiTests = suite('GraphQL API Tests', { client, cleanup });
 
 graphqlApiTests.before(async () => {
   const gqlServer = await mockServer();
