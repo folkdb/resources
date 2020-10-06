@@ -11,10 +11,14 @@ const graphqlApiTests = suite('GraphQL API Tests');
 
 graphqlApiTests.before(async () => {
   const gqlServer = await mockServer();
-  const { url, server } = await gqlServer.listen();
-  
+  const { url } = await gqlServer.listen();
   const { GraphQLClient } = graphqlRequest;
+
   client = new GraphQLClient(url);
+});
+
+graphqlApiTests('Always passes', () => {
+  assert.ok(true);
 });
 
 graphqlApiTests('allCategories', async () => {
