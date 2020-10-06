@@ -35,7 +35,10 @@ graphqlApiTests('allResources', async () => {
 
   assert.equal(
     response.allResources.data,
-    resources,
+    resources.map(({ category, ...rest }) => ({
+      category: { _id: category._id, slug: category.slug },
+      ...rest
+    })),
   );
 });
 
