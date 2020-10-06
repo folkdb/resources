@@ -19,7 +19,7 @@ graphqlApiTests('Always passes', () => {
   assert.ok(true);
 });
 
-graphqlApiTests('allCategories', async () => {
+graphqlApiTests('allCategories', async (context) => {
   const { context } = client;
   const response = await client.request(api.allCategories.operation);
 
@@ -29,7 +29,7 @@ graphqlApiTests('allCategories', async () => {
   );
 });
 
-graphqlApiTests('allResources', async () => {
+graphqlApiTests('allResources', async (context) => {
   const { context } = client;
   const response = await client.request(api.allResources.operation);
 
