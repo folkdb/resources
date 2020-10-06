@@ -10,9 +10,9 @@ let client;
 const graphqlApiTests = suite('GraphQL API Tests');
 
 graphqlApiTests.before(async () => {
+  const { GraphQLClient } = graphqlRequest;
   const gqlServer = await mockServer();
   const { url } = await gqlServer.listen();
-  const { GraphQLClient } = graphqlRequest;
 
   client = new GraphQLClient(url);
 });

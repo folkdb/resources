@@ -16,6 +16,8 @@ export const mockServer = async () => {
     Query: {
       allCategories: () => All(categories),
       allResources: () => All(resources),
+    },
+    Mutation: {
       createCategory: Create(categories),
       createResource: Create(resources),
       deleteCategory: Delete(categories),
