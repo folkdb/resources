@@ -53,8 +53,8 @@ graphqlApiTests('createCategory', async (context) => {
   const response = await client.request(api.createCategory.operation, { input: newCategory });
 
   assert.equal(
-    response.createCategory.data.map(({ _id, ...rest }) => rest),
-    newCategory.map(({ resources, ...rest }) => rest),
+    response.createCategory.map(({ _id, ...rest }) => rest),
+    newCategory,
   );
 });
 
