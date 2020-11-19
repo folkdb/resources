@@ -29,11 +29,11 @@ export const mockServer = async () => {
         slug: resources.find(({ _id }) => _id === id).slug,
       }),
       updateCategory: (_, { id, data }) => ({
-        categories.find(({ _id }) => _id === id)),
+        ...categories.find(({ _id }) => _id === id)),
         ...data,
       }),
       updateResource: (_, { id, data }) => {
-        resources.find(({ _id }) => _id === id)),
+        ...resources.find(({ _id }) => _id === id)),
         ...data,
       }),
     },
