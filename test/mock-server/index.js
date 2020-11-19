@@ -18,7 +18,7 @@ export const mockServer = async () => {
       allResources: () => All(resources),
     },
     Mutation: {
-      createCategory: (record) => ({ _id: 'x99', ...record }),
+      createCategory: (_, args) => ({ _id: 'x99', ...args }),
       createResource: Create(resources),
       deleteCategory: Delete(categories),
       deleteResource: Delete(resources),
