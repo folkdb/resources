@@ -32,7 +32,7 @@ export const mockServer = async () => {
         ...categories.find(({ _id }) => _id === id),
         ...data,
       }),
-      updateResource: (_, { id, data }) => {
+      updateResource: (_, { id, data }) => ({
         ...resources.find(({ _id }) => _id === id),
         ...data,
       }),
