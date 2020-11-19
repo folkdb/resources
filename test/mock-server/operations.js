@@ -3,10 +3,10 @@ export const All = (collection) => ({
 });
 
 export const Create = (collection) => (record) => ({
-  data: {
-    _id: `x${collection.length + 1}`,
-    ...record
-  },
+  _id: `x${collection.length + 1}`,
+  slug: 'a',
+  title: 'a',
+  group: 'a',
 });
 
 export const Delete = (collection) => (id) => (
