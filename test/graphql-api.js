@@ -25,7 +25,7 @@ graphqlApiTests('allCategories', async (context) => {
 
   assert.equal(
     response.allCategories.data,
-    categories.map(({ _id, slug }) => ({ _id, slug })),
+    categories,
   );
 });
 
@@ -39,6 +39,22 @@ graphqlApiTests('allResources', async (context) => {
       category: { _id: category._id, slug: category.slug },
       ...rest
     })),
+  );
+});
+
+graphqlApiTests('createCategory', async (context) => {
+  const { client } = context;
+  const newCategory = {
+    slug: 'poultry',
+    title: 'Poultry',
+    group: 'meats',
+  };
+
+  const response = await client.request(api.createCategory.operation, newCategory);
+
+  assert.equal(
+    response.createCategory.data.map(({ _id, ...rest }) => rest),
+    newCategory.map(({ resources, ...rest }) => rest);
   );
 });
 
