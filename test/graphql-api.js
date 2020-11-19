@@ -83,10 +83,12 @@ graphqlApiTests('createResource', async (context) => {
     response.createResource.category._id,
     categories[2]._id,
   );
+  
+  const filter = ({ _id, category, tags, ...rest }) => rest;
 
   assert.equal(
-    (({ _id, category, ...rest }) => rest)(response.createResource),
-    (({ category, ...rest }) => rest)(newResource),
+    filter(response.createResource),
+    filter(newResource),
   );
 });
 
