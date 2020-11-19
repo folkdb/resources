@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@iarna/toml": "^2.2.5",
-    "clean-stack": "^3.0.0",
+    "clean-stack": "^3.0.1",
     "dotenv": "^8.2.0",
     "extract-stack": "^2.0.0",
     "graphql-request": "^3.3.0",
@@ -34,6 +34,7 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "graphql": "^15.4.0",
+    "uid": "^2.0.0",
     "updtr": "^3.1.0",
     "uvu": "^0.4.1"
   },
