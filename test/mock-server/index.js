@@ -19,7 +19,17 @@ export const mockServer = async () => {
     },
     Mutation: {
       createCategory: (_, { data }) => ({ _id: uid(), ...data }),
-      createResource: (_, { data }) => ({ _id: uid(), ...data }),
+      createResource: (_, { data }) => {
+        let connected = categories.find(
+          ({ _id }) => _id === data.category.connect,
+        );
+        if (!connected) { connected = data.category.create; }
+        return {
+          _id: uid(),
+          ...data,
+          category: { _id: connected._id, slug: connected.slug },
+        };
+      },
       deleteCategory: (_, { id }) => ({ 
         _id: id,
         slug: categories.find(({ _id }) => _id === id).slug,
