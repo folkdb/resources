@@ -69,7 +69,9 @@ graphqlApiTests('createResource', async (context) => {
     category: { 
       connect: categories[2]._id,
     },
-    tags: [],
+    tags: {
+      connect: [],
+    },
   };
 
   const response = await client.request(

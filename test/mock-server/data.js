@@ -31,7 +31,7 @@ export const resources = [
       _id: categories[0]._id,
       slug: categories[0].slug,
     },
-    tags: [],
+    tags: { data: [] },
   },
   {
     _id: 'r2',
@@ -44,7 +44,7 @@ export const resources = [
       _id: categories[1]._id,
       slug: categories[1].slug,
     },
-    tags: [],
+    tags: { data: [] },
   },
   {
     _id: 'r1',
@@ -57,6 +57,6 @@ export const resources = [
       _id: categories[2]._id,
       slug: categories[2].slug,
     },
-    tags: [],
+    tags: { data: [] },
   },
 ];
