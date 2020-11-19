@@ -27,7 +27,10 @@ export const resources = [
     title: 'Apple',
     author: 'Daniel',
     description: 'A delicious tree fruit',
-    category: categories[0],
+    category: { 
+      _id: categories[0]._id,
+      slug: categories[0].slug,
+    },
   },
   {
     _id: 'r2',
@@ -36,7 +39,10 @@ export const resources = [
     title: 'Carrot',
     author: 'Daniel',
     description: 'A delicious root vegetable',
-    category: categories[1],
+    category: { 
+      _id: categories[1]._id,
+      slug: categories[1].slug,
+    },
   },
   {
     _id: 'r1',
@@ -45,6 +51,9 @@ export const resources = [
     title: 'Oats',
     author: 'Daniel',
     description: 'A delicious whole grain',
-    category: categories[2],
+    category: { 
+      _id: categories[2]._id,
+      slug: categories[2].slug,
+    },
   },
 ];

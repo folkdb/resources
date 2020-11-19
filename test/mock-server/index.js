@@ -1,8 +1,8 @@
 import { resolve } from 'path';
 import { readFile } from 'fs/promises';
 import apolloServer from 'apollo-server';
+import { uid } from 'uid';
 import { categories, resources } from './data.js';
-import { All, Create, Delete, Update } from './operations.js';
 
 const { ApolloServer } = apolloServer;
 
@@ -14,16 +14,28 @@ export const mockServer = async () => {
 
   const resolvers = {
     Query: {
-      allCategories: () => All(categories),
-      allResources: () => All(resources),
+      allCategories: () => ({ data: categories }),
+      allResources: () => ({ data: resources }),
     },
     Mutation: {
-      createCategory: (_, { data }) => ({ _id: 'x99', ...data }),
-      createResource: Create(resources),
-      deleteCategory: Delete(categories),
-      deleteResource: Delete(resources),
-      updateCategory: Update(categories),
-      updateResource: Update(resources),
+      createCategory: (_, { data }) => ({ _id: uid(), ...data }),
+      createResource: (_, { data }) => ({ _id: uid(), ...data }),
+      deleteCategory: (_, { id }) => ({ 
+        _id: id,
+        slug: categories.find(({ _id }) => _id === id).slug,
+      }),
+      deleteResource: (_, { id }) => ({ 
+        _id: id,
+        slug: resources.find(({ _id }) => _id === id).slug,
+      }),
+      updateCategory: (_, { id, data }) => ({
+        categories.find(({ _id }) => _id === id)),
+        ...data,
+      }),
+      updateResource: (_, { id, data }) => {
+        resources.find(({ _id }) => _id === id)),
+        ...data,
+      }),
     },
   };
 
