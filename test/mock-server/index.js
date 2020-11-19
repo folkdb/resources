@@ -28,7 +28,7 @@ export const mockServer = async () => {
           _id: uid(),
           ...data,
           category: { _id: connected._id, slug: connected.slug },
-          tags: { data: data.tags },
+          tags: { data: [] },
         };
       },
       deleteCategory: (_, { id }) => ({ 
