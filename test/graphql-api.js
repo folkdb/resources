@@ -54,7 +54,7 @@ graphqlApiTests('createCategory', async (context) => {
 
   assert.equal(
     response.createCategory.data.map(({ _id, ...rest }) => rest),
-    newCategory.map(({ resources, ...rest }) => rest);
+    newCategory.map(({ resources, ...rest }) => rest),
   );
 });
 
