@@ -50,7 +50,7 @@ graphqlApiTests('createCategory', async (context) => {
     group: 'meats',
   };
 
-  const response = await client.request(api.createCategory.operation, { input: newCategory });
+  const response = await client.request(api.createCategory.operation, newCategory);
 
   assert.equal(
     response.createCategory.data.map(({ _id, ...rest }) => rest),
