@@ -4,9 +4,7 @@ export const All = (collection) => ({
 
 export const Create = (collection) => (record) => ({
   _id: `x${collection.length + 1}`,
-  slug: 'a',
-  title: 'a',
-  group: 'a',
+  ...record
 });
 
 export const Delete = (collection) => (id) => (
