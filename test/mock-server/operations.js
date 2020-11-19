@@ -2,10 +2,12 @@ export const All = (collection) => ({
   data: collection,
 });
 
-export const Create = (collection) => (record) => ({
-  _id: `x${collection.length + 1}`,
-  ...record
-});
+export const Create = (collection) => (record) => (
+  data: {
+    _id: `x${collection.length + 1}`,
+    ...record
+  },
+);
 
 export const Delete = (collection) => (id) => (
   collection.find(({ _id }) => _id === id)
