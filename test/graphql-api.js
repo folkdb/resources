@@ -58,4 +58,33 @@ graphqlApiTests('createCategory', async (context) => {
   );
 });
 
+graphqlApiTests('createResource', async (context) => {
+  const { client } = context;
+  const newResource = {
+    slug: 'pear',
+    url: 'http://fruit.yum/pear',
+    title: 'Pear',
+    author: 'Daniel',
+    description: 'Another delicious tree fruit',
+    category: { 
+      connect: categories[2]._id,
+    },
+  };
+
+  const response = await client.request(
+    api.createResource.operation,
+    { input: newResource },
+  );
+  
+  assert.equal(
+    response.createResource.category._id,
+    categories[2]._id,
+  );
+
+  assert.equal(
+    ({ _id, category, ...rest }) => rest)(response.createResource),
+    ({ category, ...rest }) => rest)(newResource),
+  );
+});
+
 export default graphqlApiTests;
